@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Teachers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
+        <div>
+            <h1>List of All Teachers</h1>
+        </div>
+        <div class="admin-dashboard">
+            <h1>Admin Dashboard</h1>
+        </div>
+    </div>
+
+    <!-- Search bar and Back button -->
+    <div class="search-bar">
+        <a href="admin-dashboard.html" class="back-button">Back</a>
+        <input type="text" placeholder="Search for teachers...">
+        
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>ID Number</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example row -->
+                <tr>
+                    <td>1</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>3456789876541</td>
+                    <td>john.doe@example.com</td>
+                    <td>012-345-6789</td>
+                    <td class="action-buttons">
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td>5218762309846</td>
+                    <td>jane.smith@example.com</td>
+                    <td>098-765-4321</td>
+                    <td class="action-buttons">
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more rows manually -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
