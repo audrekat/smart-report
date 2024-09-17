@@ -1,3 +1,6 @@
+body{
+    background-color: rgb(247, 243, 243);
+}
 .container{
     display: flex;
     justify-content: center;
@@ -26,4 +29,7 @@ button{
 }
 h1{
     color: blue;
+}
+.heading{
+    text-align: end;
 }
