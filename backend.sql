@@ -14,7 +14,7 @@ CREATE TABLE Parent (
     Contact BIGINT(15),
     Address VARCHAR(100),
     Email_address VARCHAR(100),
-    Password VARCHAR(50),
+    FOREIGN KEY
     Date_created DATE
 );
 
@@ -68,4 +68,11 @@ CREATE TABLE Comment (
     Comment VARCHAR(255),
     Date_created DATE,
     FOREIGN KEY (Subject_ID) REFERENCES Subject(Subject_ID)
+);
+
+CREATE TABLE UserLogin (
+    UserID INT(11) AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(100),
+    Password VARCHAR(50),
+    Role VARCHAR(50) -- Admin, Parent, Teacher
 );
