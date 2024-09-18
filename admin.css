@@ -11,7 +11,7 @@ body{
 .container div{
     height: 250px;
     width:335px;
-    background-color: aqua;
+    background-color: rgb(11, 1, 61);
     margin:60px;
     text-align: center;
 }
@@ -25,7 +25,7 @@ button{
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-    color: blue;
+    color: rgb(0, 238, 255);
 }
 h1{
     color: blue;
