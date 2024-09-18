@@ -1,0 +1,81 @@
+git<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Subjects to Learner</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .form-container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Assign Subjects to Learner</h1>
+    </div>
+
+    <!-- Form for assigning subjects -->
+    <div class="form-container">
+        <form action="submit_assignments.php" method="post">
+            <div class="form-group">
+                <label for="learner_id">Learner ID:</label>
+                <input type="text" id="learner_id" name="learner_id" required>
+            </div>
+            <div class="form-group">
+                <label for="learner_name">Learner Name:</label>
+                <input type="text" id="learner_name" name="learner_name" required>
+            </div>
+            <div class="form-group">
+                <label for="subjects">Select Subjects (up to 3):</label>
+                <select id="subjects" name="subjects[]" multiple required>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="English">English</option>
+                    <option value="Geography">Geography</option>
+                    <option value="Art">Art</option>
+                    <option value="Music">Music</option>
+                    <option value="Physical Education">Physical Education</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="French">French</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="German">German</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Physics">Physics</option>
+                </select>
+                <small>Select up to 3 subjects using Ctrl (Windows) or Command (Mac) key.</small>
+            </div>
+            <div class="submit-container">
+                <button type="submit">Assign Subjects</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
