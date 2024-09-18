@@ -14,7 +14,6 @@ CREATE TABLE Parent (
     Contact BIGINT(15),
     Address VARCHAR(100),
     Email_address VARCHAR(100),
-    FOREIGN KEY
     Date_created DATE
 );
 
@@ -31,16 +30,22 @@ CREATE TABLE Learner (
     FOREIGN KEY (Parent_id) REFERENCES Parent(Parent_id)
 );
 
-CREATE TABLE Subject (
-    Subject_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
-    Learner_id INT(11),
-    Subject_name VARCHAR(50),
-    Grade VARCHAR(10),
-    Term VARCHAR(10),
-    Year INT(10),
-    Date_created DATE,
-    FOREIGN KEY (Learner_id) REFERENCES Learner(Learner_id)
-);
+INSERT INTO Subjects (subject_name) VALUES
+('Mathematics');
+('Science');
+('History');
+('English'),
+('Geography'),
+('Art'),
+('Music'),
+('Physical Education'),
+('Computer Science'),
+('French'),
+('Spanish'),
+('German'),
+('Biology'),
+('Chemistry'),
+('Physics');
 
 CREATE TABLE Teacher (
     Teacher_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
