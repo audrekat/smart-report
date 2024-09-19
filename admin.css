@@ -1,35 +1,9 @@
-body{
-    background-color: rgb(247, 243, 243);
-}
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-    background-color: aliceblue;
-}
-.container div{
-    height: 250px;
-    width:335px;
-    background-color: rgb(11, 1, 61);
-    margin:60px;
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
     text-align: center;
 }
-button{
-    height: 50px;
-    width: 120px;
-    border: none;
-    border-radius: 15px;
-    margin-top: 50px;
-    font-size: 25px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: rgb(0, 238, 255);
-}
-h1{
-    color: blue;
-}
-.heading{
-    text-align: end;
-}
+

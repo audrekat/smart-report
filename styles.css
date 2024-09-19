@@ -1,0 +1,226 @@
+ /* General reset */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+  /* Full-page layout */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    }
+/* Header styles */
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0056b3;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    color: white;
+}
+
+.dashboard h1 {
+    color: white;
+}
+
+/* Form container */
+.login_container {
+    background-color: #0056b3; /* Form background color */
+    padding: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: navy;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: white; /* Darker shade of navy on hover */
+    color: #004080;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* reset password */
+
+.reset_container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 40px;
+    color: white;
+    padding: 20px;
+    background-color: #0056b3;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    color: white;
+}
+p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* admin dashboard */
+
+ /* Header Styles */
+ .header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.dashboard h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Admin Dashboard Title Aligned to the Right */
+.abc {
+    text-align: right;
+    margin-top: 70px;
+}
+
+.abc h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Container for Admin Options */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* Space between the divs */
+    margin-top: 30px;
+}
+
+.container div {
+    background-color: #004080;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+}
+
+.container div h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* Button Styles */
+.btn, .btnn {
+    display: inline-block;
+    width: 80px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btnn {
+    background-color: #28a745;
+}
+
+/* Hover Effects */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btnn:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container div {
+        width: 90%;
+    }
+
+    .abc {
+        text-align: center;
+    }
+}
