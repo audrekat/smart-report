@@ -64,7 +64,7 @@ a {
 </head>
 <body>
 
-    <form action="">
+    <form action="connect.php" method="post">
         <div class="container">
           <h1>Register a parent</h1>
         
@@ -78,10 +78,14 @@ a {
           <label for="id number"><b>ID Number:</b></label>
           <input type="text" placeholder="ID number" name="id number" id="id number" required>
 
-          <label for="Gender"><b>Gender:</b></label>
-          <input type="text" placeholder="Gender" name="Gender" id="Gender" required>
-
-          <label for="email"><b>address:</b></label>
+          
+          <select name="gender">
+            <option value="female">female</option>
+            <option value="male">male</option>
+          </select>
+          <br>
+<br>
+          <label for="email"><b></b></label>
           <input type="text" placeholder="Enter physical address" name="address" id="address" required>
     
           <label for="email"><b>Email address:</b></label>
@@ -89,9 +93,15 @@ a {
 
           <label for="email"><b>Contact</b></label>
           <input type="text" placeholder="+27/" name="contact" id="contact" required>
- 
- 
+
+          <label for="email"><b>user_name</b></label>
+          <input type="text" placeholder="username" name="" id="" required>
+
+          <label for="email"><b>user_type</b></label>
+          <input type="text" placeholder="user_type" name="user_type" id="user_type" required>
+
           
+  
           <hr>
           <button type="submit" class="registerbtn">Register</button>
         </div>
