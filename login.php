@@ -1,36 +1,52 @@
-<!-- <?php
-// Start the session to track login state
+<?php
+$host = "localhost"; // or your host
+$user = "your_username"; // your database username
+$pass = "your_password"; // your database password
+$dbname = "smart_report"; // your database name
+
 session_start();
+$page_tittle ="Login form";
+   
+      include("login.php");
+      include("login.php");
+      $user_data = check_login($con);
 
-// Hardcoded username and password for demonstration purposes
-$valid_username = 'user';
-$valid_password = 'password';
+     if($_SERVER['REQUEST_METHOD'] == "POST")
+     {
+        //something was posted
+        $user_name = $_POST['user_name'];
+        $password = $_POST['password'];
 
-// Function to sanitize user input
-function sanitize_input($data) {
-    return htmlspecialchars(stripslashes(trim($data)));
-}
+        if(!empty($user_name) && empty($password) && !is_numeric($user_name))
+        {
+            //read from datadase
+            $user_id = random_num(20);
+            $query = "select * from users where user_name = '$user_name' limit 1";
+            $result = mysqli_query($con, $query);
 
-// Check if form was submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitize and retrieve user input
-    $username = sanitize_input($_POST['username']);
-    $password = sanitize_input($_POST['password']);
-    
-    // Validate the credentials
-    if ($username === $valid_username && $password === $valid_password) {
-        // Set session variable and redirect to a protected page
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        header('Location: dashboard.php');
-        exit();
-    } else {
-        // Invalid credentials
-        $error_message = "Invalid username or password.";
-    }
-} else {
-    $error_message = "Invalid request method.";
-}
+            if($result)
+            {
+              
+              if($result && mysqli_num_rows($result) > 0)
+              {
+                $user_data = mysqli_fetch_assoc($result);
+            
+              if($user_data['password'] === $password)
+              {
+                $_SESSION[ 'user_id'] = $user_data['user_id'];
+                header("Location: dashboard.php");
+                die;
+              }
+            }
+
+          }
+          echo "wrong username or password";    
+          
+        }else
+        {
+          echo "wrong username or password";
+        }
+     }
 ?>
 
 <!DOCTYPE html>
@@ -39,92 +55,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.7);
-            max-width: 300px;
-            width: 100%;
-        }
-        h2 {
-            margin-bottom: 20px;
-            
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        input[type="submit"] {
-            background-color: yellow;
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        .error {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <div class="container">
-        <h2>Login</h2>
-        <form action="login.php" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <input type="submit" value="Login">
+    <div class="login-container">
+        <h2>Login to Smart Report</h2>
+        <?php if (!empty($error)): ?>
+            <div class="error"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
         </form>
-        
     </div>
 </body>
-</html> -->
-@{
-newPassword = Request["newPassword"];
-confirmPassword = Request["confirmPassword"];
-token = Request["token"];
-if IsPost
-{
-    // input testing is ommitted here to save space
-    retunValue = ResetPassword(token, newPassword);
-}
-}
-<h1>Change Password</h1>
+</html>
 
-<form method="post" action="">
-
-<label for="newPassword">New Password:</label>
-<input type="password" id="newPassword" name="newPassword" title="New password" />
-
-<label for="confirmPassword">Confirm Password:</label>
-<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
-
-<label for="token">Pasword Token:</label>
-<input type="text" id="token" name="token" title="Password Token" />
-
-<p class="form-actions">
-<input type="submit" value="Change Password" title="Change password" />
-</p>
-
-</form>
