@@ -1,55 +1,44 @@
-<?php
-$host = "localhost"; // or your host
-$user = "your_username"; // your database username
-$pass = "your_password"; // your database password
-$dbname = "smart_report"; // your database name
-
+<!-- <?php
+// Start the session to track login state
 session_start();
-$page_tittle ="Login form";
-   
-      include("login.php");
-      include("login.php");
-      $user_data = check_login($con);
 
-     if($_SERVER['REQUEST_METHOD'] == "POST")
-     {
-        //something was posted
-        $user_name = $_POST['user_name'];
-        $password = $_POST['password'];
+// Hardcoded username and password for demonstration purposes
+$valid_username = 'user';
+$valid_password = 'password';
 
-        if(!empty($user_name) && empty($password) && !is_numeric($user_name))
-        {
-            //read from datadase
-            $user_id = random_num(20);
-            $query = "select * from users where user_name = '$user_name' limit 1";
-            $result = mysqli_query($con, $query);
+// Function to sanitize user input
+function sanitize_input($data) {
+    return htmlspecialchars(stripslashes(trim($data)));
+}
 
-            if($result)
-            {
-              
-              if($result && mysqli_num_rows($result) > 0)
-              {
-                $user_data = mysqli_fetch_assoc($result);
-            
-              if($user_data['password'] === $password)
-              {
-                $_SESSION[ 'user_id'] = $user_data['user_id'];
-                header("Location: dashboard.php");
-                die;
-              }
-            }
-
-          }
-          echo "wrong username or password";    
-          
-        }else
-        {
-          echo "wrong username or password";
-        }
-     }
+// Check if form was submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and retrieve user input
+    $username = sanitize_input($_POST['username']);
+    $password = sanitize_input($_POST['password']);
+    
+    // Validate the credentials
+    if ($username === $valid_username && $password === $valid_password) {
+        // Set session variable and redirect to a protected page
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        header('Location: dashboard.php');
+        exit();
+    } else {
+        // Invalid credentials
+        $error_message = "Invalid username or password.";
+    }
+} else {
+    $error_message = "Invalid request method.";
+}
 ?>
 
-<!DOCTYPE html>
+<?php if (isset($error_message)): ?>
+    <p><?php echo $error_message; ?></p>
+<?php endif; ?>
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -76,5 +65,32 @@ $page_tittle ="Login form";
         </form>
     </div>
 </body>
-</html>
+</html> -->
+@{
+newPassword = Request["newPassword"];
+confirmPassword = Request["confirmPassword"];
+token = Request["token"];
+if IsPost
+{
+    // input testing is ommitted here to save space
+    retunValue = ResetPassword(token, newPassword);
+}
+}
+<h1>Change Password</h1>
 
+<form method="post" action="">
+
+<label for="newPassword">New Password:</label>
+<input type="password" id="newPassword" name="newPassword" title="New password" />
+
+<label for="confirmPassword">Confirm Password:</label>
+<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
+
+<label for="token">Pasword Token:</label>
+<input type="text" id="token" name="token" title="Password Token" />
+
+<p class="form-actions">
+<input type="submit" value="Change Password" title="Change password" />
+</p>
+
+</form>

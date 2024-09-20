@@ -1,10 +1,16 @@
-/* view all teachers styling */
+<<<<<<< HEAD
 body {
+=======
+/* view all teachers styling */
+/* body {
+>>>>>>> dev-branch
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Light blue background */
+    background-color: #f4f4f4;
     margin: 0;
+<<<<<<< HEAD
+=======
     padding: 0;
-}
+} */
 .header {
     display: flex;
     justify-content: space-between;
@@ -53,6 +59,10 @@ h1{
     font-size: 16px;
     border: 1px solid #1e3a5f;
     border-radius: 4px;
+<<<<<<<<< Temporary merge branch 1
+=========
+    margin-left: 950px;
+>>>>>>>>> Temporary merge branch 2
 }
 .back-button {
     background-color: #1e90ff; /* Sky blue */
@@ -142,32 +152,28 @@ body {
     margin: 20px;
     border: 1px solid #ddd;
     background-color: white;
+>>>>>>> dev-branch
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-}
-table {
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-}
-table, th, td {
-    border: 1px solid #ddd;
-}
-th, td {
+  }
+  
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  
+  th, td {
     padding: 10px;
-    text-align: center;
-}
-th {
-    background-color: #1e3a5f; /* Navy blue */
-    color: white;
-}
-td {
-    background-color: #f1f9ff;
-}
-.comments-cell, .attendance-cell {
     text-align: left;
+<<<<<<< HEAD
     padding-left: 10px;
     background-color: #e9f5ff;
 }
@@ -293,3 +299,90 @@ a {
 a:hover {
   text-decoration: underline;
 }
+=======
+  }
+  
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #eaeaea;
+  }
+  
+  form {
+    margin-bottom: 20px;
+    background-color: skyblue;
+     /* padding: 15px; */
+     width: 800px; /* Set a width for the form */
+     padding-bottom: 30px;
+     margin-left: 400px;
+    
+  
+    
+      display: block;
+      justify-content: center;
+      align-items: center;
+      height: 60vh; /* Full height of the viewport */
+      
+  
+  
+      /* display: flex; */
+      flex-direction: column; /* Stack elements vertically */
+     
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+  
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  input{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .aa{
+    width: 200px;
+    margin-left: 400px;
+    font-size: 20px;
+    font-weight: bold;
+  
+  }
+  
+>>>>>>> w-branch
