@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set session variable and redirect to a protected page
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
-        header('Location: admind.php');
+        header('Location: dashboard.php');
         exit();
     } else {
         // Invalid credentials
