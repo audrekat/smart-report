@@ -64,7 +64,7 @@ a {
 </head>
 <body>
 
-    <form action="connect.php" method="post">
+    <form action="cnn.php" method="post">
         <div class="container">
           <h1>Register a parent</h1>
         
@@ -78,14 +78,13 @@ a {
           <label for="id number"><b>ID Number:</b></label>
           <input type="text" placeholder="ID number" name="id number" id="id number" required>
 
-          
-          <select name="gender">
-            <option value="female">female</option>
-            <option value="male">male</option>
-          </select>
-          <br>
-<br>
-          <label for="email"><b></b></label>
+          <label for="gender"> <b>Gender:</b></label>
+          <select name="Gender" id="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+          </select>          
+          <br><br>
+          <label for="email"><b>Address</b></label>
           <input type="text" placeholder="Enter physical address" name="address" id="address" required>
     
           <label for="email"><b>Email address:</b></label>
