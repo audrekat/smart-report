@@ -1,31 +1,48 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit teacher</title>
-    <link rel="stylesheet" href="styles.css">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Edit teacher</h1>
+  <!-- Header -->
+  <div class="header">
+    <div>
+        <img src="logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="dashboard">
+        <h1>Name of the School</h1>
+    </div>
+</div>
+    <form action="conn.php" method="post">
+        <div class="addcontainer">
+          <h1>Update teacher details</h1>
+        
+          <hr>
+      
+          <label for="name"><b>Name(s):</b></label>
+          <input type="text" placeholder="Enter name" name="name" id="name" required>
+    
+          <label for="surname"><b>Surname:</b></label>
+          <input type="text" placeholder="Surname" name="surname" id="surname" required>
+    
+          <label for="id number"><b>ID Number:</b></label>
+          <input type="text" placeholder="ID number" name="id number" id="id number" required>
 
+          <label for="Gender"><b>Gender:</b></label>
+          <input type="text" placeholder="Gender" name="Gender" id="Gender" required>
 
-    <form action="update_teacher.php" method="POST">
-        <input type="hidden" name="learner_id" value=">
-
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" value="" required>
-
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" value="" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="" required>
-
-        <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" id="date_of_birth" name="date_of_birth" value="" required>
-
-        <button type="submit">Update Learner</button>
-    </form>
-    <a class="aa" href="teacher_list.html">Back to List</a>
+          <label for="email"><b>Email address:</b></label>
+          <input type="text" placeholder="Enter Email address" name="Email" id="Email" required>
+    
+          <label for="email"><b>Contact</b></label>
+          <input type="text" placeholder="+27/" name="contact" id="contact" required>
+ 
+      
+          <hr>
+          <button type="submit" class="registerbtn">Update teacher details</button>
+        </div>
+      </form>
 </body>
 </html>

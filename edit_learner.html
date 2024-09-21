@@ -1,31 +1,70 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Learner</title>
-    <link rel="stylesheet" href="styles.css">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-    <h1>Edit Learner</h1>
+  <!-- Header -->
+  <div class="header">
+    <div>
+        <img src="logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="dashboard">
+        <h1>Name of the School</h1>
+    </div>
+</div>
+    <form action="">
+        <div class="addcontainer">
+          <h1>update learner details</h1>
+        
+          <hr>
+      
+          <label for="name"><b>Name(s):</b></label>
+          <input type="text" placeholder="Enter name" name="name" id="name" required>
+    
+          <label for="surname"><b>Surname:</b></label>
+          <input type="text" placeholder="Surname" name="surname" id="surname" required>
+    
+          <label for="id number"><b>ID Number:</b></label>
+          <input type="text" placeholder="ID number" name="id number" id="id number" required>
 
+          <label for="Date of Birth"><b>Date of Birth:</b></label>
+          <input type="text" placeholder="YYYY/MM/DD" name="Date of Birth:" id="Date of Birth:" required>
 
-    <form action="update_learner.php" method="POST">
-        <input type="hidden" name="learner_id" value=">
+          <label for="Gender"><b>Gender:</b></label>
+          <input type="text" placeholder="Gender" name="Gender" id="Gender" required>
 
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" value="" required>
-
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" value="" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="" required>
-
-        <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" id="date_of_birth" name="date_of_birth" value="" required>
-
-        <button type="submit">Update Learner</button>
-    </form>
-    <a class="aa" href="learner_list.html">Back to List</a>
+          <label for="email"><b>address:</b></label>
+          <input type="text" placeholder="Enter physical address" name="address" id="address" required>
+    
+          <label for="email"><b>Grade:</b></label>
+          <input type="text" placeholder="Enter Grade" name="grade" id="grade" required>
+          <label for="subjects">Select Subjects (up to 3):</label>
+                <select id="subjects" name="subjects[]" multiple required>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="English">English</option>
+                    <option value="Geography">Geography</option>
+                    <option value="Art">Art</option>
+                    <option value="Music">Music</option>
+                    <option value="Physical Education">Physical Education</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="French">French</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="German">German</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Physics">Physics</option>
+                </select>
+            </div>
+      
+          <hr>
+          <button type="submit" class="registerbtn">update</button>
+        </div>
+      </form>
 </body>
 </html>

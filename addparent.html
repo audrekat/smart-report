@@ -3,70 +3,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-     *{box-sizing: border-box}
-     
-
-/* Add padding to containers */
-.container {
-  padding: 16px;
-}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for the submit/register button */
-.registerbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.registerbtn:hover {
-  opacity:1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-    </style>
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Header -->
+  <div class="header">
+    <div>
+        <img src="logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="dashboard">
+        <h1>Name of the School</h1>
+    </div>
+</div>
 
-    <form action="connect.php" method="post">
-        <div class="container">
-          <h1>Register a parent</h1>
+    <form action="addparent.php" method="post">
+        <div class="addcontainer">
+          <h1>Register a Parent</h1>
         
           <hr>
           <label for="name"><b>Name(s):</b></label>
@@ -75,33 +27,32 @@ a {
           <label for="surname"><b>Surname:</b></label>
           <input type="text" placeholder="Surname" name="surname" id="surname" required>
     
-          <label for="id number"><b>ID Number:</b></label>
-          <input type="text" placeholder="ID number" name="id number" id="id number" required>
+          <label for="id_number"><b>ID Number:</b></label>
+          <input type="text" placeholder="ID number" name="id_number" id="id_number" required>
 
-          
-          <select name="gender">
-            <option value="female">female</option>
-            <option value="male">male</option>
+          <label for="gender"><b>Gender:</b></label>
+          <select name="gender" id="gender" required>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
           </select>
-          <br>
-<br>
-          <label for="email"><b></b></label>
+          <br><br>
+
+          <label for="address"><b>Physical Address:</b></label>
           <input type="text" placeholder="Enter physical address" name="address" id="address" required>
     
-          <label for="email"><b>Email address:</b></label>
-          <input type="text" placeholder="Enter Email address" name="Email" id="Email" required>
+          <label for="email"><b>Email Address:</b></label>
+          <input type="email" placeholder="Enter Email address" name="email" id="email" required>
 
-          <label for="email"><b>Contact</b></label>
-          <input type="text" placeholder="+27/" name="contact" id="contact" required>
+          <label for="contact"><b>Contact:</b></label>
+          <input type="text" placeholder="+27 123 456 7890" name="contact" id="contact" required>
 
-          <label for="email"><b>user_name</b></label>
-          <input type="text" placeholder="username" name="" id="" required>
+          <label for="username"><b>Username:</b></label>
+          <input type="text" placeholder="Username" name="username" id="username" required>
 
-          <label for="email"><b>user_type</b></label>
-          <input type="text" placeholder="user_type" name="user_type" id="user_type" required>
+          <label for="user_type"><b>User Type:</b></label>
+          <input type="text" placeholder="User Type" name="user_type" id="user_type" required>
 
-          
-  
           <hr>
           <button type="submit" class="registerbtn">Register</button>
         </div>

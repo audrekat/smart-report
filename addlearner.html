@@ -3,68 +3,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-     *{box-sizing: border-box}
-
-/* Add padding to containers */
-.container {
-  padding: 16px;
-}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for the submit/register button */
-.registerbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.registerbtn:hover {
-  opacity:1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-    </style>
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form action="">
-        <div class="container">
-          <h1>Register a learner</h1>
+  <!-- Header -->
+  <div class="header">
+    <div>
+        <img src="logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="dashboard">
+        <h1>Name of the School</h1>
+    </div>
+</div>
+    <form action="addlearner.php" method="post">
+        <div class="addcontainer">
+          <h1>Register a Learner</h1>
         
           <hr>
       
@@ -74,25 +27,47 @@ a {
           <label for="surname"><b>Surname:</b></label>
           <input type="text" placeholder="Surname" name="surname" id="surname" required>
     
-          <label for="id number"><b>ID Number:</b></label>
-          <input type="text" placeholder="ID number" name="id number" id="id number" required>
+          <label for="id_number"><b>ID Number:</b></label>
+          <input type="text" placeholder="ID number" name="id_number" id="id_number" required>
 
-          <label for="Date of Birth"><b>Date of Birth:</b></label>
-          <input type="text" placeholder="YYYY/MM/DD" name="Date of Birth:" id="Date of Birth:" required>
+          <label for="date_of_birth"><b>Date of Birth:</b></label>
+          <input type="date" name="date_of_birth" id="date_of_birth" required>
 
-          <label for="Gender"><b>Gender:</b></label>
-          <input type="text" placeholder="Gender" name="Gender" id="Gender" required>
+          <label for="gender"><b>Gender:</b></label>
+          <select name="gender" id="gender" required>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
+          </select>
 
-          <label for="email"><b>address:</b></label>
+          <label for="address"><b>Address:</b></label>
           <input type="text" placeholder="Enter physical address" name="address" id="address" required>
     
-          <label for="email"><b>Grade:</b></label>
+          <label for="grade"><b>Grade:</b></label>
           <input type="text" placeholder="Enter Grade" name="grade" id="grade" required>
-      
+
+          <label for="subjects"><b>Select Subjects (up to 3):</b></label>
+          <select id="subjects" name="subjects[]" multiple required>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Science">Science</option>
+              <option value="History">History</option>
+              <option value="English">English</option>
+              <option value="Geography">Geography</option>
+              <option value="Art">Art</option>
+              <option value="Music">Music</option>
+              <option value="Physical Education">Physical Education</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="French">French</option>
+              <option value="Spanish">Spanish</option>
+              <option value="German">German</option>
+              <option value="Biology">Biology</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Physics">Physics</option>
+          </select>
+
           <hr>
           <button type="submit" class="registerbtn">Register</button>
         </div>
-      
-      </form>
+    </form>
 </body>
 </html>

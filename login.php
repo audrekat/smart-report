@@ -1,24 +1,45 @@
 <?php
 session_start();
-include 'db.php'; // Database connection file
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+// Database connection details
+$host = 'localhost';
+$dbname = 'userslogin';
+$username = 'root'; // Change if necessary
+$password = ''; // Change if necessary
 
-    // Query to check if the user exists
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Could not connect to the database: " . $e->getMessage());
+}
+/*
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $input_email = $_POST['email'];
+    $input_password = $_POST['password'];
 
-    if ($user && password_verify($password, $user['password'])) {
-        // Password matches, set session and redirect to dashboard
-        $_SESSION['user_id'] = $user['id'];
-        header("Location: admind.html");
-        exit();
+    // Prepare a select statement
+    $sql = "SELECT * FROM users WHERE email = :email"; // Assuming you're using email
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':email', $input_email);
+    $stmt->execute();
+
+    if ($stmt->rowCount() == 1) {
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Verify the password
+        if (password_verify($input_password, $user['password'])) {
+            // Password is correct
+            $_SESSION['username'] = $user['email']; // or $user['username'] if you prefer
+            header("Location: admind.html"); // Redirect to a dashboard or home page
+            exit();
+        } else {
+            echo "Invalid password.";
+        }
     } else {
-        // Invalid credentials
-        echo "Invalid email or password.";
+        echo "No user found with that email.";
     }
 }
+    */
 ?>
