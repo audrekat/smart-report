@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = $_POST['gender'];
     $address = $_POST['address'];
     $grade = $_POST['grade'];
-    $subjects = $_POST['subjects']; // This will be an array
+    $subjects = $_POST['subjects']; // This will be an array of subjects from the form
 
     // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'smart_report'); // Adjust if needed
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Prepare and bind the SQL statement to insert the learner
+    // Insert the learner data into the learner table
     $sql = "INSERT INTO learner (name, surname, id_number, date_of_birth, gender, address, grade) 
             VALUES ('$name', '$surname', '$id_number', '$date_of_birth', '$gender', '$address', '$grade')";
 
@@ -28,20 +28,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the last inserted learner ID
         $learner_id = $conn->insert_id;
 
-        // Insert each subject into the learner_subjects table
+        // Insert each subject into the subjects table
         foreach ($subjects as $subject) {
+            // Insert subject with learner_id into subjects table
             $sql_subject = "INSERT INTO subjects (learner_id, subject) VALUES ('$learner_id', '$subject')";
-            $conn->query($sql_subjects);
+            if (!$conn->query($sql_subject)) {
+                echo "Error inserting subject: " . $conn->error;
+            }
         }
 
-        // Redirect to addlearner.html
+        // Redirect to the addlearner.html page upon success
         header("Location: addlearner.html");
         exit(); // Ensure the script stops after redirection
+
     } else {
+        // Handle the error if learner insertion fails
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    // Close the connection
+    // Close the database connection
     $conn->close();
 }
 ?>

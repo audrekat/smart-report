@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher's Report Input</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <title>Teacher Dashboard</title>
     <style>
-        .form-container {
-            width: 90%;
-            margin: auto;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom: 20px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -21,154 +20,193 @@
             text-align: center;
         }
         th {
-            background-color: blue;
+            background-color: #f2f2f2;
         }
-        .form-group input {
-            width: 100%;
-            padding: 6px;
-            box-sizing: border-box;
-        }
-        .comments-cell, .attendance-cell {
+        .section-header {
+            font-weight: bold;
+            margin-top: 20px;
             text-align: left;
         }
-        .submit-container {
-            text-align: center;
-            margin-top: 20px;
-        }
+        
     </style>
 </head>
 <body>
-
     <!-- Header -->
-    <div class="header">
-        <div>
-            <img src="logo.png" alt="Logo" class="logo">
-        </div>
-        <div>
-            <h1>Enter Learner Report</h1>
-        </div>
-        <div class="admin-dashboard">
-            <h1>Teacher Dashboard</h1>
-        </div>
+  <div class="header">
+    <div>
+        <img src="logo.png" alt="Logo" class="logo">
     </div>
-    <div class="call">
-        <a href="previous-page.html" class="back-button">Back</a>
-        <a href="submit_report.html" class="submit-button">Submit Report</a>
+    <div class="dashboard">
+        <h1>Name of the School</h1>
     </div>
 
-    <!-- Form for entering results -->
-    <div class="form-container">
-        <form action="#" method="post">
-            <!-- Combined Table -->
-            <table>
-                <thead>
-                    <tr>
-                        <th rowspan="2">Subject</th>
-                        <th colspan="5">Term 1</th> <br>
-                        <th colspan="5">Term 2</th> <br>
-                        <th colspan="5">Term 3</th> <br>
-                        <th colspan="5">Term 4</th> <br>
-                    </tr>
-                    <tr>
-                        <th>Test 1</th>
-                        <th>Test 2</th>
-                        <th>Exam</th>
-                        <th>Final Mark</th>
-                        <th>Level</th>
-                        <th>Test 1</th>
-                        <th>Test 2</th>
-                        <th>Exam</th>
-                        <th>Final Mark</th>
-                        <th>Level</th>
-                        <th>Test 1</th>
-                        <th>Test 2</th>
-                        <th>Exam</th>
-                        <th>Final Mark</th>
-                        <th>Level</th>
-                        <th>Test 1</th>
-                        <th>Test 2</th>
-                        <th>Exam</th>
-                        <th>Final Mark</th>
-                        <th>Level</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Subject rows with input fields -->
-                    <tr>
-                        <td><input type="text" name="subjects[]" placeholder="Subject"></td>
-                        <td><input type="number" name="term1_test1[]"></td>
-                        <td><input type="number" name="term1_test2[]"></td>
-                        <td><input type="number" name="term1_exam[]"></td>
-                        <td><input type="number" name="term1_final_mark[]"></td>
-                        <td><input type="number" name="term1_level[]"></td>
-                        <td><input type="number" name="term2_test1[]"></td>
-                        <td><input type="number" name="term2_test2[]"></td>
-                        <td><input type="number" name="term2_exam[]"></td>
-                        <td><input type="number" name="term2_final_mark[]"></td>
-                        <td><input type="number" name="term2_level[]"></td>
-                        <td><input type="number" name="term3_test1[]"></td>
-                        <td><input type="number" name="term3_test2[]"></td>
-                        <td><input type="number" name="term3_exam[]"></td>
-                        <td><input type="number" name="term3_final_mark[]"></td>
-                        <td><input type="number" name="term3_level[]"></td>
-                        <td><input type="number" name="term4_test1[]"></td>
-                        <td><input type="number" name="term4_test2[]"></td>
-                        <td><input type="number" name="term4_exam[]"></td>
-                        <td><input type="number" name="term4_final_mark[]"></td>
-                        <td><input type="number" name="term4_level[]"></td>
-                    </tr>
-                    <!-- Example rows for subjects with comments, results, and attendance -->
-                    <tr>
-                        <td><input type="text" name="subjects[]" placeholder="Mathematics"></td>
-                        <td><input type="number" name="term1_test1[]"></td>
-                        <td><input type="number" name="term1_test2[]"></td>
-                        <td><input type="number" name="term1_exam[]"></td>
-                        <td><input type="number" name="term1_final_mark[]"></td>
-                        <td><input type="number" name="term1_level[]"></td>
-                        <td><input type="number" name="term2_test1[]"></td>
-                        <td><input type="number" name="term2_test2[]"></td>
-                        <td><input type="number" name="term2_exam[]"></td>
-                        <td><input type="number" name="term2_final_mark[]"></td>
-                        <td><input type="number" name="term2_level[]"></td>
-                        <td><input type="number" name="term3_test1[]"></td>
-                        <td><input type="number" name="term3_test2[]"></td>
-                        <td><input type="number" name="term3_exam[]"></td>
-                        <td><input type="number" name="term3_final_mark[]"></td>
-                        <td><input type="number" name="term3_level[]"></td>
-                        <td><input type="number" name="term4_test1[]"></td>
-                        <td><input type="number" name="term4_test2[]"></td>
-                        <td><input type="number" name="term4_exam[]"></td>
-                        <td><input type="number" name="term4_final_mark[]"></td>
-                        <td><input type="number" name="term4_level[]"></td>
-                    </tr>
-                    <tr>
-                        <th>Results</th>
-                        <td colspan="5"><input type="text" name="results[]" placeholder="Result"></td>
-                        <td colspan="5"><input type="text" name="results[]" placeholder="Result"></td>
-                        <td colspan="5"><input type="text" name="results[]" placeholder="Result"></td>
-                        <td colspan="5"><input type="text" name="results[]" placeholder="Result"></td>
-                    </tr>
-                    <tr>
-                        <th>Comments</th>
-                        <td colspan="5"><input type="text" name="comments[]" placeholder="Comments"></td>
-                        <td colspan="5"><input type="text" name="comments[]" placeholder="Comments"></td>
-                        <td colspan="5"><input type="text" name="comments[]" placeholder="Comments"></td>
-                        <td colspan="5"><input type="text" name="comments[]" placeholder="Comments"></td>
-                    </tr>
-                    <tr>
-                        <th>Attendance</th>
-                        <td colspan="5"><input type="text" name="attendance[]" placeholder="Total Days, Present, Absent"></td>
-                        <td colspan="5"><input type="text" name="attendance[]" placeholder="Total Days, Present, Absent"></td>
-                        <td colspan="5"><input type="text" name="attendance[]" placeholder="Total Days, Present, Absent"></td>
-                        <td colspan="5"><input type="text" name="attendance[]" placeholder="Total Days, Present, Absent"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="submit-container">
-                <button type="submit">Submit Report</button>
-            </div>
-        </form>
-    </div>
+<h1>Teacher Dashboard</h1>
+
+
+<!-- Term 1 Results Table -->
+<h2>Term 1 Results Table</h2>
+<table>
+    <tr>
+        <th>Subject</th>
+        <th>Test 1</th>
+        <th>Test 2</th>
+        <th>Test 3</th>
+        <th>Exam</th>
+        <th>Level</th>
+    </tr>
+    <tr>
+        <td>Subject 1</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td>Subject 2</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td><strong>Attendance</strong></td>
+        <td colspan="5"><input type="text" placeholder="Attendance"></td>
+    </tr>
+    <tr>
+        <td><strong>Results</strong></td>
+        <td colspan="5"><input type="text" placeholder="Overall Results"></td>
+    </tr>
+    <tr>
+        <td><strong>Comments</strong></td>
+        <td colspan="5"><input type="text" placeholder="Comments"></td>
+    </tr>
+</table>
+
+<!-- Term 2 Results Table -->
+<h2>Term 2 Results Table</h2>
+<table>
+    <tr>
+        <th>Subject</th>
+        <th>Test 1</th>
+        <th>Test 2</th>
+        <th>Test 3</th>
+        <th>Exam</th>
+        <th>Level</th>
+    </tr>
+    <tr>
+        <td>Subject 1</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td>Subject 2</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td><strong>Attendance</strong></td>
+        <td colspan="5"><input type="text" placeholder="Attendance"></td>
+    </tr>
+    <tr>
+        <td><strong>Results</strong></td>
+        <td colspan="5"><input type="text" placeholder="Overall Results"></td>
+    </tr>
+    <tr>
+        <td><strong>Comments</strong></td>
+        <td colspan="5"><input type="text" placeholder="Comments"></td>
+    </tr>
+</table>
+
+<!-- Term 3 Results Table -->
+<h2>Term 3 Results Table</h2>
+<table>
+    <tr>
+        <th>Subject</th>
+        <th>Test 1</th>
+        <th>Test 2</th>
+        <th>Test 3</th>
+        <th>Exam</th>
+        <th>Level</th>
+    </tr>
+    <tr>
+        <td>Subject 1</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td>Subject 2</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td><strong>Attendance</strong></td>
+        <td colspan="5"><input type="text" placeholder="Attendance"></td>
+    </tr>
+    <tr>
+        <td><strong>Results</strong></td>
+        <td colspan="5"><input type="text" placeholder="Overall Results"></td>
+    </tr>
+    <tr>
+        <td><strong>Comments</strong></td>
+        <td colspan="5"><input type="text" placeholder="Comments"></td>
+    </tr>
+</table>
+<button type="button" onclick="submitTermResults(3)">Submit Term 3 Results</button>
+
+<!-- Term 4 Results Table -->
+<h2>Term 4 Results Table</h2>
+<table>
+    <tr>
+        <th>Subject</th>
+        <th>Test 1</th>
+        <th>Test 2</th>
+        <th>Test 3</th>
+        <th>Exam</th>
+        <th>Level</th>
+    </tr>
+    <tr>
+        <td>Subject 1</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td>Subject 2</td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Result"></td>
+        <td><input type="text" placeholder="Level"></td>
+    </tr>
+    <tr>
+        <td><strong>Attendance</strong></td>
+        <td colspan="5"><input type="text" placeholder="Attendance"></td>
+    </tr>
+    <tr>
+        <td><strong>Results</strong></td>
+        <td colspan="5"><input type="text" placeholder="Overall Results"></td>
+    </tr>
+    <tr>
+        <td><strong>Comments</strong></td>
+        <td colspan="5"><input type="text" placeholder="Comments"></td>
+    </tr>
+</table>
 
 </body>
 </html>

@@ -17,8 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact = $_POST['contact'];
     $username = $_POST['username'];
     $user_type = $_POST['user_type'];
+    
+    // Generate a random password and hash it
     $password = bin2hex(random_bytes(4)); // Generate a random password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password for security
+
+    // Set registration date
+    $registration_date = date('Y-m-d H:i:s');
 
     // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'smart_report');
@@ -33,21 +38,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Prepare and bind the SQL statement to insert the parent form data
-        $sql_parent = "INSERT INTO parent (name, surname, id_number, gender, address, email, contact, username, user_type, password) 
-                       VALUES ('$name', '$surname', '$id_number', '$gender', '$address', '$email', '$contact', '$username', '$user_type', '$password')";
+        $sql_parent = "INSERT INTO parent (name, surname, id_number, gender, address, email, contact, username, user_type, password, registration_date) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt_parent = $conn->prepare($sql_parent);
+        $stmt_parent->bind_param('sssssssssss', $name, $surname, $id_number, $gender, $address, $email, $contact, $username, $user_type, $hashed_password, $registration_date);
         
         // Execute the insert query for parent
-        if (!$conn->query($sql_parent)) {
-            throw new Exception("Error inserting into parent table: " . $conn->error);
+        if (!$stmt_parent->execute()) {
+            throw new Exception("Error inserting into parent table: " . $stmt_parent->error);
         }
 
         // Insert the same username, hashed password, and role into the userslogin table
-        $sql_userlogin = "INSERT INTO userslogin (username, password, role) 
-                          VALUES ('$username', '$hashed_password', '$user_type')";
+        $sql_userlogin = "INSERT INTO userlogin (email, password, role) VALUES (?, ?, ?)";
+        $stmt_userlogin = $conn->prepare($sql_userlogin);
+        $stmt_userlogin->bind_param('sss', $username, $hashed_password, $user_type);
         
         // Execute the insert query for userslogin
-        if (!$conn->query($sql_userlogin)) {
-            throw new Exception("Error inserting into userlogin table: " . $conn->error);
+        if (!$stmt_userlogin->execute()) {
+            throw new Exception("Error inserting into userlogin table: " . $stmt_userlogin->error);
         }
 
         // Commit the transaction
@@ -66,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Port = 587;
 
             // Recipients
-            $mail->setFrom('malemamahlatse70@gmail.com', 'mahlatse');
+            $mail->setFrom('malemamahlatse70@gmail.com', 'Mahlatse');
             $mail->addAddress($email, "$name $surname"); // Add the parent’s email
 
             // Content
@@ -91,7 +99,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo $e->getMessage();
     }
 
-    // Close the connection
+    // Close the connections
+    $stmt_parent->close();
+    $stmt_userlogin->close();
     $conn->close();
 }
 ?>

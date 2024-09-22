@@ -3,27 +3,24 @@ session_start();
 
 // Database connection
 $servername = "localhost";
-$username = "root"; // Your database username
-$password = ""; // Your database password
+$db_username = "root"; // Your database username
+$db_password = ""; // Your database password
 $dbname = "smart_report";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
+$conn = new mysqli($servername, $db_username, $db_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get user input
-    $email = $_POST['email'];
+    $username = $_POST['email']; // Use username or email based on your setup
     $password = $_POST['password'];
 
-    // Check if user exists in the database
-    $sql = "SELECT * FROM userlogin WHERE username = ?";
+    // Check if user exists
+    $sql = "SELECT * FROM userlogin WHERE email = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -36,13 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
 
-            // Redirect to dashboard based on user role
+            // Redirect based on user role
             if ($user['role'] == 'admin') {
-                header("Location: admind.html");
+                header("Location: admind.html"); // Admin dashboard
             } elseif ($user['role'] == 'teacher') {
-                header("Location: teacher_dashboard.php");
+                header("Location: teacher_dashboard.php"); // Teacher dashboard
             } elseif ($user['role'] == 'parent') {
-                header("Location: parent_dashboard.php");
+                header("Location: parent_dashboard.php"); // Parent dashboard
             }
             exit();
         } else {
