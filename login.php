@@ -1,45 +1,59 @@
 <?php
 session_start();
 
-// Database connection details
-$host = 'localhost';
-$dbname = 'userslogin';
-$username = 'root'; // Change if necessary
-$password = ''; // Change if necessary
+// Database connection
+$servername = "localhost";
+$username = "root"; // Your database username
+$password = ""; // Your database password
+$dbname = "smart_report";
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Could not connect to the database: " . $e->getMessage());
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-/*
-// Handle form submission
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $input_email = $_POST['email'];
-    $input_password = $_POST['password'];
+    // Get user input
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    // Prepare a select statement
-    $sql = "SELECT * FROM users WHERE email = :email"; // Assuming you're using email
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':email', $input_email);
+    // Check if user exists in the database
+    $sql = "SELECT * FROM userlogin WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
     $stmt->execute();
+    $result = $stmt->get_result();
 
-    if ($stmt->rowCount() == 1) {
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        // Verify the password
-        if (password_verify($input_password, $user['password'])) {
-            // Password is correct
-            $_SESSION['username'] = $user['email']; // or $user['username'] if you prefer
-            header("Location: admind.html"); // Redirect to a dashboard or home page
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+
+        // Verify password
+        if (password_verify($password, $user['password'])) {
+            // Store session data
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
+
+            // Redirect to dashboard based on user role
+            if ($user['role'] == 'admin') {
+                header("Location: admind.html");
+            } elseif ($user['role'] == 'teacher') {
+                header("Location: teacher_dashboard.php");
+            } elseif ($user['role'] == 'parent') {
+                header("Location: parent_dashboard.php");
+            }
             exit();
         } else {
-            echo "Invalid password.";
+            echo "Invalid password!";
         }
     } else {
-        echo "No user found with that email.";
+        echo "User not found!";
     }
+
+    $stmt->close();
 }
-    */
+
+$conn->close();
 ?>

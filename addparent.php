@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $user_type = $_POST['user_type'];
     $password = bin2hex(random_bytes(4)); // Generate a random password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password for security
 
     // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'smart_report');
@@ -27,26 +28,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Prepare and bind the SQL statement to insert the form data
-    $sql = "INSERT INTO parent (name, surname, id_number, gender, address, email, contact, username, user_type, password) 
-            VALUES ('$name', '$surname', '$id_number', '$gender', '$address', '$email', '$contact', '$username', '$user_type', '$password')";
+    // Begin transaction to ensure both inserts happen together
+    $conn->begin_transaction();
 
-    // Execute the query and check if the insert was successful
-    if ($conn->query($sql) === TRUE) {
-        // Set up PHPMailer
+    try {
+        // Prepare and bind the SQL statement to insert the parent form data
+        $sql_parent = "INSERT INTO parent (name, surname, id_number, gender, address, email, contact, username, user_type, password) 
+                       VALUES ('$name', '$surname', '$id_number', '$gender', '$address', '$email', '$contact', '$username', '$user_type', '$password')";
+        
+        // Execute the insert query for parent
+        if (!$conn->query($sql_parent)) {
+            throw new Exception("Error inserting into parent table: " . $conn->error);
+        }
+
+        // Insert the same username, hashed password, and role into the userslogin table
+        $sql_userlogin = "INSERT INTO userslogin (username, password, role) 
+                          VALUES ('$username', '$hashed_password', '$user_type')";
+        
+        // Execute the insert query for userslogin
+        if (!$conn->query($sql_userlogin)) {
+            throw new Exception("Error inserting into userlogin table: " . $conn->error);
+        }
+
+        // Commit the transaction
+        $conn->commit();
+
+        // Set up PHPMailer to send the email
         $mail = new PHPMailer(true);
         try {
             // Server settings
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'your-email@gmail.com'; // Your Gmail address
-            $mail->Password = 'your-16-character-app-password'; // Your App Password
+            $mail->Username = 'malemamahlatse70@gmail.com'; // Your Gmail address
+            $mail->Password = 'cdbhkiurykowykqw'; // Your App Password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
             // Recipients
-            $mail->setFrom('your-email@gmail.com', 'Your Name');
+            $mail->setFrom('malemamahlatse70@gmail.com', 'mahlatse');
             $mail->addAddress($email, "$name $surname"); // Add the parent’s email
 
             // Content
@@ -64,8 +84,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redirect to addlearner.html
         header("Location: addlearner.html");
         exit(); // Ensure the script stops after redirection
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+
+    } catch (Exception $e) {
+        // Rollback the transaction if something goes wrong
+        $conn->rollback();
+        echo $e->getMessage();
     }
 
     // Close the connection

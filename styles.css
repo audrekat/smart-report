@@ -37,7 +37,7 @@ html, body {
 .login_container {
     background-color: #0056b3;
     padding: 40px;
-    margin-top: 20px;
+    margin-top: 50px;
     border-radius: 10px;
     width: 300px;
     text-align: center;
@@ -50,13 +50,11 @@ h2 {
 }
 
 .form-group {
-    margin-bottom: 15px;
     text-align: left;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
     color: white;
 }
 
