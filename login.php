@@ -3,6 +3,7 @@
 session_start();
 
 // Hardcoded username and password for demonstration purposes
+
 $valid_username = 'user';
 $valid_password = 'password';
 
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set session variable and redirect to a protected page
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
-        header('Location: dashboard.php');
+        header('Location: addteacher.php');
         exit();
     } else {
         // Invalid credentials
@@ -65,18 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </body>
-</html> -->
-@{
-newPassword = Request["newPassword"];
-confirmPassword = Request["confirmPassword"];
-token = Request["token"];
-if IsPost
-{
-    // input testing is ommitted here to save space
-    retunValue = ResetPassword(token, newPassword);
-}
-}
-<h1>Change Password</h1>
+</html> 
+
+<!-- <h1>Change Password</h1>
 
 <form method="post" action="">
 
@@ -93,4 +85,5 @@ if IsPost
 <input type="submit" value="Change Password" title="Change password" />
 </p>
 
-</form>
+</form> -->
+
