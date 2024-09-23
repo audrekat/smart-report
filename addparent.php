@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $registration_date = date('Y-m-d H:i:s');
 
     // Connect to the database
-    $conn = new mysqli('localhost', 'root', '', 'smart_report');
+    $conn = new mysqli('localhost', 'root', '', 'report_smart');
 
     // Check the connection
     if ($conn->connect_error) {
