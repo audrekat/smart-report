@@ -40,10 +40,10 @@ if ($conn->query($sql_query) === TRUE) {
     try {
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'smtp.example.com'; 
+        $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = true;
-        $mail->Username = 'your-email@example.com'; 
-        $mail->Password = 'your-email-password'; 
+        $mail->Username = 'audreymmakaepea@gmail.com'; 
+        $mail->Password = 'ttxn rwfb uevr mbbr'; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
         $mail->Port = 587; 
 
