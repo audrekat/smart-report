@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subjects = $_POST['subjects']; // This will be an array of subjects from the form
 
     // Connect to the database
-    $conn = new mysqli('localhost', 'root', '', 'report_smart'); // Adjust if needed
+    $conn = new mysqli('localhost', 'root', '', 'smart_report'); // Adjust if needed
 
     // Check the connection
     if ($conn->connect_error) {
