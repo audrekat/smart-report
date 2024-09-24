@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set session variable and redirect to a protected page
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
-        header('Location: addteacher.php');
+        header('Location: admind.php');
         exit();
     } else {
         // Invalid credentials
@@ -155,7 +155,7 @@ a:hover {
 
 
    
-    <div class="container">
+    <!-- <div class="container">
         <h2>Login</h2>
         <form action="login.php" method="post">
           <div class="form-group">
@@ -174,7 +174,7 @@ a:hover {
           </div>
       </form>      
         
-    </div>
+    </div> -->
     
 </body>
 </html> 
