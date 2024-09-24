@@ -25,11 +25,16 @@ $id_number = mysqli_real_escape_string($conn, $_POST['id_number']);
 $gender = mysqli_real_escape_string($conn, $_POST['Gender']); // Check form field name
 $email = mysqli_real_escape_string($conn, $_POST['Email']);
 $contact = mysqli_real_escape_string($conn, $_POST['contact']);
+$username = mysqli_real_escape_string($conn, $_POST['username']);
+$address = mysqli_real_escape_string($conn, $_POST['address']);
+$registration_date = mysqli_real_escape_string($conn, $_POST['registration_date'] ?? '');
 $password = '1234parent'; // Set a default password
 $user_type = 'parent'; // Define user type
 
 // Corrected SQL query
-$sql_query = "INSERT INTO `parent`(`name`, `surname`, `id_number`, `gender`, `email`, `contact`, `password`, `user_type`, `username`) VALUES ('$name', '$surname', '$id_number', '$gender', '$email', '$contact','$password','$user_type','$username')";
+
+$sql_query = "INSERT INTO `parent` (`name`, `surname`, `id_number`, `contact`, `address`, `email`, `registration_date`, `user_type`, `username`, `gender`, `password`) VALUES ('$name', '$surname', '$id_number', '$contact', '$address', '$email', '$registration_date', '$user_type', '$username', '$gender', '$password')";
+
 
 if ($conn->query($sql_query) === TRUE) {
     echo "New parent registered successfully<br>";
@@ -54,7 +59,8 @@ if ($conn->query($sql_query) === TRUE) {
         // Email content
         $mail->isHTML(true);
         $mail->Subject = 'Registration Successful';
-        $mail->Body = "Hi $name,<br><br>Thank you for registering as a parent! Use your name as username and 1234parent as your password.<br>Best regards,<br>Your Organization";
+        $mail->Body = "Hi $name,<br><br>Thank you for registering as a parent! Use this information to login to our system <br>
+        username= $username  password= $password.<br>Best regards,<br>Your Organization";
 
         $mail->send();
         echo 'Confirmation email has been sent.';
