@@ -204,35 +204,10 @@ a:hover {
 </head>
 
 <body>
-    <!-- <form class="form-login" action="index.php" method="POST">
-        <div class="form-group">
-            <label>username</label>
-            <input type="text" class="form-control" 
-                name="username" id="username" 
-                aria-describedby="emailHelp"
-                placeholder="username" required>
-        </div>
-
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" 
-                name="Password" id="Password" 
-                placeholder="Password" required>
-        </div>
-
-        <button type="submit" 
-            class="btn btn-primary btn-lg">Login
-        </button>
-        
-        <button type="button" 
-            class="btn btn-warning btn-lg" 
-            id="Login-button">
-            login
-        </button>
-    </form> -->
+   
     <div class="container">
         <h2>Login</h2>
-        <form action="login.php" method="post">
+        <form action="admind.html" method="post">
           <div class="form-group">
               <label for="username">Username:</label>
               <input type="text" id="username" name="username" required>
@@ -252,7 +227,7 @@ a:hover {
     </div>
     <script>
             $("#Login-button").click(function () {
-                window.location.replace("admind.html");
+                window.location.replace("learner_list.html");
             });
     </script>
 </body>

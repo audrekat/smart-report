@@ -14,7 +14,7 @@
         "width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" 
-        href="css/style.css" media="screen" />
+     href="css/style.css" media="screen" />
 
     <!--  Adding bootstrap  -->
     <link rel="stylesheet" href=
