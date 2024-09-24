@@ -29,6 +29,10 @@
             margin: 0;
         }
 
+        .dashboard h1{
+            color: white;
+        }
+
         .logo {
             width: 60px;
             height: 60px;
@@ -90,10 +94,10 @@
     <!-- Header -->
     <div class="header">
         <div>
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="1.jpg" alt="Logo" class="logo">
         </div>
         <div class="dashboard">
-            <h1>Parent Dashboard</h1>
+            <h1>DIOPONG PRIMARY SCHOOL</h1>
         </div>
     </div>
 

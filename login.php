@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get user input
-    $username = $_POST['email']; // Use username or email based on your setup
+    $username = $_POST['email']; 
     $password = $_POST['password'];
 
     // Check if user exists
@@ -30,16 +30,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify password
         if (password_verify($password, $user['password'])) {
             // Store session data
-            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
 
             // Redirect based on user role
-            if ($user['role'] == 'admin') {
-                header("Location: admind.html"); // Admin dashboard
-            } elseif ($user['role'] == 'teacher') {
-                header("Location: teacher_dashboard.php"); // Teacher dashboard
-            } elseif ($user['role'] == 'parent') {
-                header("Location: parent_dashboard.php"); // Parent dashboard
+            switch ($user['role']) {
+                case 'admin':
+                    header("Location: admin_dashboard.php"); // Admin dashboard
+                    break;
+                case 'teacher':
+                    header("Location: teacher_dashboard.php"); // Teacher dashboard
+                    break;
+                case 'parent':
+                    header("Location: parent_dashboard.php"); // Parent dashboard
+                    break;
+                default:
+                    echo "Invalid role!";
+                    break;
             }
             exit();
         } else {
