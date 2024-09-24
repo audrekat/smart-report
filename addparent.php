@@ -18,6 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $user_type = $_POST['user_type'];
     
+    // Validate ID number
+if (!preg_match('/^\d{13}$/', $id_number)) {
+    die("Error: ID Number must be exactly 13 digits long.");
+}
+
     // Generate a random password and hash it
     $password = bin2hex(random_bytes(4));
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);

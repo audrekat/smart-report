@@ -17,6 +17,11 @@ $address = $_POST['address'];
 $grade = $_POST['grade'];
 $subjects = $_POST['subjects']; // Array of selected subjects
 
+// Validate ID number
+if (!preg_match('/^\d{13}$/', $id_number)) {
+    die("Error: ID Number must be exactly 13 digits long.");
+}
+
 // Insert learner data into 'learners' table
 $sql = "INSERT INTO learner (name, surname, id_number, date_of_birth, gender, address, grade) 
         VALUES ('$name', '$surname', '$id_number', '$date_of_birth', '$gender', '$address', '$grade')";
