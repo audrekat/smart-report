@@ -28,8 +28,8 @@ $contact = mysqli_real_escape_string($conn, $_POST['contact']);
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 $address = mysqli_real_escape_string($conn, $_POST['address']);
 $registration_date = mysqli_real_escape_string($conn, $_POST['registration_date'] ?? '');
-$password = '1234parent'; // Set a default password
-$user_type = 'parent'; // Define user type
+$password = password_hash(mysqli_real_escape_string($conn, $_POST['password']), PASSWORD_DEFAULT);
+$user_type =  mysqli_real_escape_string($conn, $_POST['user_type']); // Define user type
 
 // Corrected SQL query
 
@@ -60,7 +60,8 @@ if ($conn->query($sql_query) === TRUE) {
         $mail->isHTML(true);
         $mail->Subject = 'Registration Successful';
         $mail->Body = "Hi $name,<br><br>Thank you for registering as a parent! Use this information to login to our system <br>
-        username= $username  password= $password.<br>Best regards,<br>Your Organization";
+        username: $username <br> password: $password.<br>Best regards,<br>Your Organization";
+        
 
         $mail->send();
         echo 'Confirmation email has been sent.';
