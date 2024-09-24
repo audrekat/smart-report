@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 // Start the session to track login state
 session_start();
 
@@ -13,6 +13,8 @@ function sanitize_input($data) {
 
 // Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    echo("post");
     // Sanitize and retrieve user input
     $username = sanitize_input($_POST['username']);
     $password = sanitize_input($_POST['password']);
@@ -31,9 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     $error_message = "Invalid request method.";
 }
-?>
+// ?>
 
-<!DOCTYPE html>
+<?php if (isset($error_message)): ?>
+    <p><?php echo $error_message; ?></p>
+<?php endif; ?>
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -99,17 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     </div>
 </body>
-</html> -->
-@{
-newPassword = Request["newPassword"];
-confirmPassword = Request["confirmPassword"];
-token = Request["token"];
-if IsPost
-{
-    // input testing is ommitted here to save space
-    retunValue = ResetPassword(token, newPassword);
-}
-}
+</html> 
+
 <h1>Change Password</h1>
 
 <form method="post" action="">
@@ -127,4 +125,4 @@ if IsPost
 <input type="submit" value="Change Password" title="Change password" />
 </p>
 
-</form>
+</form> -->
