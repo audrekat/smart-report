@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 // Start the session to track login state
 session_start();
 
@@ -29,61 +29,153 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Invalid credentials
         $error_message = "Invalid username or password.";
     }
-} else {
+} 
+     else {
     $error_message = "Invalid request method.";
 }
 ?>
 
-<?php if (isset($error_message)): ?>
+<!-- <?php if (isset($error_message)): ?>
     <p><?php echo $error_message; ?></p>
-<?php endif; ?>
-
+<?php endif; ?> -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css"> 
+
+<style>
+    /* Basic reset */
+body, h2, form, input, a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(image\ copy.png);
+  background-size: cover;
+}
+
+/* Container styles */
+.container {
+  background: skyblue;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.11);
+  padding: 20px;
+  width: 300px;
+  max-width: 100%;
+}
+
+/* Header styles */
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styles */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input styles */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Submit button styles */
+input[type="submit"] {
+  background-color:green;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #4cae4c;
+}
+
+/* Link styles */
+a {
+  color: red;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+/* .logo{
+  padding-left: 20px;
+} */
+
+</style>
+
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login to Smart Report</h2>
-        <?php if (!empty($error)): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-        <form action="login.php" method="POST">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+    <div class="main">
+        <div class="icon">
+          <div class="navbar">
+            <div class="logo">
+              
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
+
+        </div>
+
     </div>
+    
+
+
+   
+    <div class="container">
+        <h2>Login</h2>
+        <form action="login.php" method="post">
+          <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required>
+          </div>
+          <div class="form-group">
+              <input type="submit" value="Login">
+          </div>
+          <div class="form-group">
+              <a href="forgot password.html">Forgot password?</a>
+          </div>
+      </form>      
+        
+    </div>
+    
 </body>
 </html> 
-
-<!-- <h1>Change Password</h1>
-
-<form method="post" action="">
-
-<label for="newPassword">New Password:</label>
-<input type="password" id="newPassword" name="newPassword" title="New password" />
-
-<label for="confirmPassword">Confirm Password:</label>
-<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
-
-<label for="token">Pasword Token:</label>
-<input type="text" id="token" name="token" title="Password Token" />
-
-<p class="form-actions">
-<input type="submit" value="Change Password" title="Change password" />
-</p>
-
-</form> -->
 

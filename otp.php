@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysqli = new mysqli("localhost", "username", "password", "otp_system"); // Replace with your DB credentials
+$mysqli = new mysqli("localhost", "root", "", "smart_report"); // Replace with your DB credentials
 
 function generateOTP($length = 6) {
     $digits = '0123456789';
@@ -9,11 +9,10 @@ function generateOTP($length = 6) {
 
 $userEmail = 'user@example.com'; // Replace with user input
 $otp = generateOTP();
-// $expiresAt = date('Y-m-d H:i:s', strtotime('+5 minutes')); // 5 minutes expiration
 
 // Insert OTP into the database
-$stmt = $mysqli->prepare("INSERT INTO otps (user_email, otp, expires_at) VALUES (?, ?, ?)");
-$stmt->bind_param("ssi", $userEmail, $otp, $expiresAt);
+$stmt = $mysqli->prepare("INSERT INTO otps (user_email, otp) VALUES (?, ?, ?)");
+$stmt->bind_param("ss", $userEmail, $otp,);
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {
