@@ -143,10 +143,10 @@
     <!-- Header -->
     <div class="header">
         <div>
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="1.jpg" alt="Logo" class="logo">
         </div>
         <div class="dashboard">
-            <h1>Name of the School</h1>
+            <h1>DIOPONG PRIMARY SCHOOL</h1>
         </div>
     </div>
 
@@ -206,7 +206,7 @@
                             <td>" . htmlspecialchars($row['email']) . "</td>
                             <td>" . htmlspecialchars($row['contact']) . "</td>
                             <td>
-                                <a href='edit_parent.html?id=" . $row['parent_id'] . "'><button class='edit-button'>Edit</button></a>
+                                <a href='edit_parent.php?id=" . $row['parent_id'] . "'><button class='edit-button'>Edit</button></a>
                                 <a href='deleteparent.php?id=" . $row['parent_id'] . "' onclick='return confirm(\"Are you sure you want to delete this parent?\");'><button class='delete-button'>Delete</button></a>
                             </td>
                         </tr>";

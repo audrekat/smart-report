@@ -150,10 +150,10 @@
     <!-- Header -->
     <div class="header">
         <div>
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="1.jpg" alt="Logo" class="logo">
         </div>
         <div class="dashboard">
-            <h1>Name of the School</h1>
+            <h1>DIOPONG PRIMARY SCHOOL</h1>
         </div>
     </div>
 
@@ -214,10 +214,10 @@
                             <td>" . htmlspecialchars($row['address']) . "</td>
                             <td>" . htmlspecialchars($row['grade']) . "</td>
                             <td>
-                                <a href='edit_learner.html?id=" . $row['learner_id'] . "'>
+                                <a href='edit_learner.php?id=" . $row['learner_id'] . "'>
                                     <button class='edit-button'>Edit</button>
                                 </a>
-                                <a href='deletelearner.php?id=" . $row['learner_id'] . "' onclick='return confirm(\"Are you sure you want to delete this learner?\");'>
+                                <a href='learners.php?id=" . $row['learner_id'] . "' onclick='return confirm(\"Are you sure you want to delete this learner?\");'>
                                     <button class='delete-button'>Delete</button>
                                 </a>
                             </td>
