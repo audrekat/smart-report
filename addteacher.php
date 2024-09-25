@@ -8,6 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $gender = $_POST['gender'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
+    $username = $_POST['username'];
+    $password = $_POST['password']; // Consider hashing this
+    $user_type = $_POST['user_type']; // Missing semicolon was added
 
     // Connect to the database
     $conn = new mysqli("localhost", "root", "", "smart_report");
@@ -18,9 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Prepare the SQL statement to insert the data
-    $sql = "INSERT INTO teacher (name, surname, id_number, gender, email, contact) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO teacher (name, surname, id_number, gender, email, contact, username, password, user_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssss", $name, $surname, $id_number, $gender, $email, $contact);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password
+    $stmt->bind_param("sssssssss", $name, $surname, $id_number, $gender, $email, $contact, $username, $hashed_password, $user_type);
 
     // Execute the query and check for success
     if ($stmt->execute()) {
@@ -85,11 +89,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
           <label for="contact"><b>Contact:</b></label>
           <input type="text" placeholder="+27 123 456 7890" name="contact" id="contact" required>
- 
+          
+          <label for="username"><b>Username:</b></label>
+          <input type="text" placeholder="Enter username" name="username" id="username" required>
+
+          <label for="password"><b>Password:</b></label>
+          <input type="password" placeholder="Enter password" name="password" id="password" required>
+
+          <label for="user_type"><b>User Type:</b></label>
+          <select name="user_type" id="user_type" required>
+            <option value="teacher">Teacher</option>
+            <option value="admin">Admin</option>
+            <option value="staff">parent</option>
+          </select>
+
           <hr>
           <button type="submit" class="registerbtn">Register</button>
         </div>
-      </form>
-
+    </form>
 </body>
 </html>
