@@ -51,7 +51,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "report_smart";
+        $dbname = "report-smart";
 
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
