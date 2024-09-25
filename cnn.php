@@ -38,6 +38,7 @@ $sql_query = "INSERT INTO `parent` (`name`, `surname`, `id_number`, `contact`, `
 
 if ($conn->query($sql_query) === TRUE) {
     echo "New parent registered successfully<br>";
+     echo "Hashed Password: " . $password . "<br>"; // Debugging line
 
     // Send confirmation email
     $mail = new PHPMailer(true);

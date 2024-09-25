@@ -22,8 +22,6 @@ $sql = "SELECT * FROM parent WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
-// Debugging line to check user data
-var_dump($user); // Check the user fetched from DB
 
 if ($user) {
     // Directly compare plain text passwords
@@ -32,7 +30,7 @@ if ($user) {
         // Password is correct
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        header("Location: OTP.php"); // Redirect to the dashboard
+        header("Location: admind.html "); // Redirect to the dashboard
         exit();
     } else {
         echo "Invalid password.";
