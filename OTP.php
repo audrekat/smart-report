@@ -26,13 +26,27 @@ $user = mysqli_fetch_assoc($result);
 var_dump($user); // Check the user fetched from DB
 
 if ($user) {
-    // Directly compare plain text passwords
-    if (password_verify($password, $user['password']))
-    {
+    // Verify the password
+    if (password_verify($password, $user['password'])) {
         // Password is correct
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        header("Location: OTP.php"); // Redirect to the dashboard
+
+        // Generate OTP
+        $otp = rand(100000, 999999); // Generate a 6-digit OTP
+        $_SESSION['otp'] = $otp;
+        $_SESSION['otp_expires'] = time() + 300; // 5 minutes expiration
+
+        // Send OTP via email
+        $to = $user['email']; // Assuming the user's email is stored in the database
+        $subject = "Your OTP Code";
+        $message = "Your OTP code is: $otp";
+        $headers = "From: no-reply@example.com";
+
+        mail($to, $subject, $message, $headers);
+
+        // Redirect to OTP verification page
+        header("Location: OTP.php");
         exit();
     } else {
         echo "Invalid password.";
