@@ -31,7 +31,7 @@ if (!preg_match('/^\d{13}$/', $id_number)) {
     $registration_date = date('Y-m-d H:i:s');
 
     // Connect to the database
-    $conn = new mysqli('localhost', 'root', '', 'smart_report');
+    $conn = new mysqli('localhost', 'root', '', 'report-smart');
 
     // Check the connection
     if ($conn->connect_error) {

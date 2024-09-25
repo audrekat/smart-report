@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_type = $_POST['user_type']; // Missing semicolon was added
 
     // Connect to the database
-    $conn = new mysqli("localhost", "root", "", "smart_report");
+    $conn = new mysqli("localhost", "root", "", "report-smart");
 
     // Check the connection
     if ($conn->connect_error) {

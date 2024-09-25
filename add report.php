@@ -3,7 +3,7 @@
 $servername = "localhost"; // Change if needed
 $username = "root"; // Change to your DB username
 $password = ""; // Change to your DB password
-$dbname = "smart_report"; // Change to your DB name
+$dbname = "report-smart"; // Change to your DB name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

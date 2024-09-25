@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost"; 
 $username = "root"; 
 $password = ""; 
-$dbname = "smart_report"; 
+$dbname = "report-smart"; 
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

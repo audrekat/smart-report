@@ -1,6 +1,6 @@
 <?php
 // Connection to the database
-$conn = new mysqli("localhost", "root", "", "smart_report");
+$conn = new mysqli("localhost", "root", "", "report-smart");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
