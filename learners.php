@@ -217,7 +217,7 @@
                                 <a href='edit_learner.php?id=" . $row['learner_id'] . "'>
                                     <button class='edit-button'>Edit</button>
                                 </a>
-                                <a href='deletelearner.php?id=" . $row['learner_id'] . "' onclick='return confirm(\"Are you sure you want to delete this learner?\");'>
+                                <a href='learners.php?id=" . $row['learner_id'] . "' onclick='return confirm(\"Are you sure you want to delete this learner?\");'>
                                     <button class='delete-button'>Delete</button>
                                 </a>
                             </td>

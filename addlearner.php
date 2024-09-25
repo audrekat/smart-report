@@ -16,6 +16,8 @@ $gender = $_POST['gender'];
 $address = $_POST['address'];
 $grade = $_POST['grade'];
 $subjects = $_POST['subjects']; // Array of selected subjects
+$parent_id = $_POST['parent_id'];
+$password = $_POST['password'];
 
 // Validate ID number
 if (!preg_match('/^\d{13}$/', $id_number)) {

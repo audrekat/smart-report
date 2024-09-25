@@ -7,7 +7,7 @@ if ($conn->connect_error) {
 }
 
 // Get learner_id from the URL and validate it
-$learner_id = isset($_GET['learner_id']) ? intval($_GET['learner_id']) : 14; 
+$learner_id = isset($_GET['name']) ? intval($_GET['name']) : 1; 
 
 if (!$learner_id) { // Check if learner_id is not set or is zero
     die("Invalid learner ID.");

@@ -130,7 +130,7 @@
             }
 
             // Assuming you have the parent_id available from session or passed via URL
-            $parent_id = 1; // Replace with actual parent ID
+            $parent_id = 18; // Replace with actual parent ID
 
             // Query to fetch all learners for the parent
             $query = "SELECT learner_id, name, surname, grade 
