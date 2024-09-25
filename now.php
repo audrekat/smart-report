@@ -7,7 +7,7 @@ if ($conn->connect_error) {
 }
 
 // Get learner_id from the URL and validate it
-$learner_id = isset($_GET['name']) ? intval($_GET['name']) : 1; 
+$learner_id = isset($_GET['name']) ? intval($_GET['name']) : 14; 
 
 if (!$learner_id) { // Check if learner_id is not set or is zero
     die("Invalid learner ID.");
@@ -15,7 +15,7 @@ if (!$learner_id) { // Check if learner_id is not set or is zero
 
 // Fetch the learner_subject_id and corresponding subject_name
 $sql = "SELECT ls.learner_subject_id, s.subject_name 
-        FROM learner_subjects ls 
+        FROM learner_subject ls 
         JOIN subject s ON ls.subject_id = s.subject_id
         WHERE ls.learner_id = ?";
 $stmt = $conn->prepare($sql);
